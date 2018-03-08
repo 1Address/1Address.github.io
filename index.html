@@ -10,8 +10,14 @@
 	</head>
 	<body>
 		<!-- YOUR CONTENT STARTS HERE -->
+		<div style="background-color: green" width="100%">
+			<div class="container-fluid">
+				<p id="account"><a href="https://metamask.io">Get MetaMask!</a></p>
+			</div>
+		</div>
 		<div class="container-fluid">
-    		<h3>Active tasks</h3>
+			<br/>
+			<h3>Active tasks</h3>
     		<div class="table-responsive">
     			<table id="tasks" class="table table-sm table-striped table-bordered table-hover">
     				<thead class="thead-light">
@@ -21,6 +27,7 @@
     						<th>Reward</th>
     						<th>Difficulty</th>
     						<th>Price</th>
+    						<th style="width:15%">Pay</th>
     					</tr>
     				</thead>
     				<tbody>
@@ -45,65 +52,66 @@
 				</table>
 			</div>
 			<br/>
-    		<h3>Create task</h3>
-    		<!-- <form action="javascript:createTask()"> -->
-                <div class="row">
-                    <div class="col-sm-6">
-                        <fieldset class="form-group">
-                            <label for="btc_prefix">Bitcoin Address Prefix:</label>
-                            <input type="text" class="form-control" id="btc_prefix" name="btc_prefix">
-                        </fieldset>
-                    </div>
-                    <div class="col-sm-6">
-                        <fieldset class="form-group">
-                            <label for="btc_difficulty">Difficulty:</label>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">GH</span>
-                                </div>
-                                <input disabled type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <fieldset class="form-group">
-                            <label for="btc_reward">Reward:</label>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">VIP</span>
-                                </div>
-                                <input type="text" class="form-control" id="btc_reward" name="btc_reward">
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="col-sm-6">
-                        <fieldset class="form-group">
-                            <label for="btc_price">Price:</label>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">VIP/GH</span>
-                                </div>
-                                <input type="text" class="form-control" id="btc_price" name="btc_price">
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <fieldset class="form-group">
-                            <label for="btc_publickey">Bitcoin Public Key:</label>
-                            <input type="text" class="form-control" id="btc_publickey" name="btc_publickey">
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary" id="create">Create</button>
-                    </div>
-                </div>
-<!--             </form> -->
+			<div class="container align-items-left">
+	    		<h3>Create task</h3>
+	    		<!-- <form action="javascript:createTask()"> -->
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <fieldset class="form-group">
+	                        <label for="btc_prefix">Bitcoin Address Prefix:</label>
+	                        <input type="text" class="form-control" id="btc_prefix" name="btc_prefix">
+	                    </fieldset>
+	                </div>
+	                <div class="col-sm-6">
+	                    <fieldset class="form-group">
+	                        <label for="btc_difficulty">Difficulty:</label>
+	                        <div class="input-group mb-2">
+	                            <div class="input-group-prepend">
+	                                <span class="input-group-text">GH</span>
+	                            </div>
+	                            <input disabled type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
+	                        </div>
+	                    </fieldset>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-6">
+	                    <fieldset class="form-group">
+	                        <label for="btc_reward">Reward:</label>
+	                        <div class="input-group mb-2">
+	                            <div class="input-group-prepend">
+	                                <span class="input-group-text">VIP</span>
+	                            </div>
+	                            <input type="text" class="form-control" id="btc_reward" name="btc_reward">
+	                        </div>
+	                    </fieldset>
+	                </div>
+	                <div class="col-sm-6">
+	                    <fieldset class="form-group">
+	                        <label for="btc_price">Price:</label>
+	                        <div class="input-group mb-2">
+	                            <div class="input-group-prepend">
+	                                <span class="input-group-text">VIP/GH</span>
+	                            </div>
+	                            <input type="text" class="form-control" id="btc_price" name="btc_price">
+	                        </div>
+	                    </fieldset>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-12">
+	                    <fieldset class="form-group">
+	                        <label for="btc_publickey">Bitcoin Public Key:</label>
+	                        <input type="text" class="form-control" id="btc_publickey" name="btc_publickey">
+	                    </fieldset>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-sm-12">
+	                    <button type="submit" class="btn btn-primary" id="create">Create</button>
+	                </div>
+	            </div>
+			</div>
 		</div>
 		<!-- YOUR CONTENT ENDS HERE -->
 		
