@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VipCoin</title>
+		<meta charset="utf-8">
+		<!-- Viewport Meta Tag -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Latest compiled and minified Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		<!-- YOUR CONTENT STARTS HERE -->
+		<div class="container-fluid">
+    		<h3>Active tasks</h3>
+    		<div class="table-responsive">
+    			<table id="tasks" class="table table-sm table-striped table-bordered table-hover">
+    				<thead class="thead-light">
+    					<tr>
+    						<th>Id</th>
+    						<th>Prefix</th>
+    						<th>Reward</th>
+    						<th>Difficulty</th>
+    						<th>Price</th>
+    					</tr>
+    				</thead>
+    				<tbody>
+    				</tbody>
+    			</table>
+    		</div>
+    		<br/>
+    		<h3>Solved tasks</h3>
+			<div class="table-responsive">
+				<table id="completed-tasks" class="table table-sm table-striped table-bordered table-hover">
+					<thead class="thead-light">
+						<tr>
+							<th>Id</th>
+							<th>Prefix</th>
+							<th>Reward</th>
+							<th>Difficulty</th>
+							<th>Price</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<br/>
+    		<h3>Create task</h3>
+    		<form action="/html/tags/html_form_tag_action.cfm">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <fieldset class="form-group">
+                            <label for="btc_prefix">Bitcoin Address Prefix:</label>
+                            <input type="text" class="form-control" id="btc_prefix" name="btc_prefix">
+                        </fieldset>
+                    </div>
+                    <div class="col-sm-6">
+                        <fieldset class="form-group">
+                            <label for="btc_difficulty">Difficulty:</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">GH</span>
+                                </div>
+                                <input disabled type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <fieldset class="form-group">
+                            <label for="btc_reward">Reward:</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">VIP</span>
+                                </div>
+                                <input type="text" class="form-control" id="btc_reward" name="btc_reward">
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-sm-6">
+                        <fieldset class="form-group">
+                            <label for="btc_price">Price:</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">VIP/GH</span>
+                                </div>
+                                <input type="text" class="form-control" id="btc_price" name="btc_price">
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <fieldset class="form-group">
+                            <label for="btc_publickey">Bitcoin Public Key:</label>
+                            <input type="text" class="form-control" id="btc_publickey" name="btc_publickey">
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </div>
+            </form>
+		</div>
+		<!-- YOUR CONTENT ENDS HERE -->
+		
+		<!-- JavaScript: placed at the end of the document so the pages load faster -->
+		
+		<!-- Web3js library -->
+		<script src="./js/web3.min.js"></script>
+		<script src="./js/vipcoin.js"></script>
+		
+		<!-- jQuery library -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		
+		<!-- Popper -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		
+		<!-- Latest compiled and minified Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>
