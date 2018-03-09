@@ -88,6 +88,14 @@ window.addEventListener('load', async function() {
                 Location.reload();
             });
     }
+    
+    async function getForTask(publicKeyX_dec, publicKeyY_dec, privateKey_dec) {
+	    const publicKey = '04' + web3js.utils.toHex(publicKeyX_dec).substr(2) + web3js.utils.toHex(publicKeyY_dec).substr(2);
+	    const privateKey = web3js.utils.toHex(privateKey_dec).substr(2)
+	    alert(`Your public key: ${publicKey}\n` +
+	    	  `Found Private Key: ${privateKey}\n` +
+	    	  `You should add this Private Key to your Private Key to produce final Private Key.`);
+    }
 
     // https://gist.github.com/brandonaaskov/1596867
     $('#btc_prefix').bind('input', updateBtcDifficulty);
@@ -209,6 +217,10 @@ window.addEventListener('load', async function() {
                     task.reward/10**18 + ' VIP, ' +
                     task.difficulty/10**6 + ' MH, ' +
                     task.reward/task.difficulty/10**9 + ' VIP/GH)');
+                    
+        let getButtonId = `button_get_${task.taskId}`;
+        let getButtonHTML = `<button type="button" class="btn btn-outline-secondary btn-sm" id="${getButtonId}"` + (account != task.creator ? ' hidden ' : '') + `>Result</button>`;
+
         $("#completed-tasks tbody").append(
             '<tr id="task_${task.id}">' +
                 `<td>` + task.taskId + '</td>' +
@@ -216,7 +228,12 @@ window.addEventListener('load', async function() {
                 `<td>` + task.reward/10**18 + ' VIP' + '</td>' +
                 `<td>` + Math.round(task.difficulty/10**9*1000)/1000 + ' GH' + '</td>' +
                 `<td>` + Math.round(task.reward/task.difficulty/10**9*1000)/1000 + ' VIP/GH' + '</td>' +
+                `<td>` + getButtonHTML + '</td>' +
             '</tr>'
         );
+        
+        $('#' + getButtonId).click(function() {
+	        getForTask(task.requestPublicXPoint, task.requestPublicYPoint, task.answerPrivateKey);
+	    });
     }
 });
