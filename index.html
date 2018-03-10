@@ -53,66 +53,79 @@
 				</table>
 			</div>
 			<br/>
-			<div class="container align-items-left">
-	    		<h3>Create task</h3>
-	    		<!-- <form action="javascript:createTask()"> -->
-	            <div class="row">
-	                <div class="col-sm-6">
-	                    <fieldset class="form-group">
-	                        <label for="btc_prefix">Bitcoin Address Prefix:</label>
-	                        <input type="text" class="form-control" id="btc_prefix" name="btc_prefix">
-	                    </fieldset>
-	                </div>
-	                <div class="col-sm-6">
-	                    <fieldset class="form-group">
-	                        <label for="btc_difficulty">Difficulty:</label>
-	                        <div class="input-group mb-2">
-	                            <div class="input-group-prepend">
-	                                <span class="input-group-text">GH</span>
-	                            </div>
-	                            <input disabled type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
-	                        </div>
-	                    </fieldset>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-sm-6">
-	                    <fieldset class="form-group">
-	                        <label for="btc_reward">Reward:</label>
-	                        <div class="input-group mb-2">
-	                            <div class="input-group-prepend">
-	                                <span class="input-group-text">VIP</span>
-	                            </div>
-	                            <input type="text" class="form-control" id="btc_reward" name="btc_reward">
-	                        </div>
-	                    </fieldset>
-	                </div>
-	                <div class="col-sm-6">
-	                    <fieldset class="form-group">
-	                        <label for="btc_price">Price:</label>
-	                        <div class="input-group mb-2">
-	                            <div class="input-group-prepend">
-	                                <span class="input-group-text">VIP/GH</span>
-	                            </div>
-	                            <input type="text" class="form-control" id="btc_price" name="btc_price">
-	                        </div>
-	                    </fieldset>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-sm-12">
-	                    <fieldset class="form-group">
-	                        <label for="btc_publickey">Bitcoin Public Key:</label>
-	                        <input type="text" class="form-control" id="btc_publickey" name="btc_publickey">
-	                    </fieldset>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-sm-12">
-	                    <button type="submit" class="btn btn-primary" id="create">Create</button>
-	                </div>
-	            </div>
-			</div>
+    		<h3>Create task</h3>
+    		<!-- <form action="javascript:createTask()"> -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <fieldset class="form-group">
+                        <label for="btc_prefix">Bitcoin Address Prefix:</label>
+                        <input type="text" class="form-control" id="btc_prefix" name="btc_prefix">
+                    </fieldset>
+                </div>
+                <div class="col-sm-6">
+                    <fieldset class="form-group">
+                        <label for="btc_difficulty">Difficulty:</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">GH</span>
+                            </div>
+                            <input disabled type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <fieldset class="form-group">
+                        <label for="btc_reward">Reward:</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">VIP</span>
+                            </div>
+                            <input type="text" class="form-control" id="btc_reward" name="btc_reward">
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-sm-6">
+                    <fieldset class="form-group">
+                        <label for="btc_price">Price:</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">VIP/GH</span>
+                            </div>
+                            <input type="text" class="form-control" id="btc_price" name="btc_price">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <fieldset class="form-group">
+                        <label for="btc_publickey">Bitcoin Public Key:</label>
+                        <input type="text" class="form-control" id="btc_publickey" name="btc_publickey">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" id="create">Create</button>
+                </div>
+            </div>
+			<br/>
+			<h3>Reference</h3>
+			<br/>
+			<h5>How to generate Bitcoin private and public keys?</h5>
+			<pre><code>$ openssl ecparam -genkey -name secp256k1 -text -noout -outform DER | xxd -p -c 1000 | sed 's/41534e31204f49443a20736563703235366b310a30740201010420/PrivKey: /' | sed 's/a00706052b8104000aa144034200/\'$'\nPubKey: /'</code></pre>
+			<pre><code>PrivKey: 1f7ca3635605bc57b579b5fdf73e3ac84aa91a9c8eddc57aa0e3452d1a429ff8
+PubKey: 0403af2a877e578086b277c6aa0622ed1bd0754cac48acdfff6591d235fa517d739ded3fd6b7e6394a4023623d67a35c836f853213d9709033f310996230469917</code></pre>
+			<br/>
+			<h5>How to generate Bitcoin public key for existing private key? (replace <code>***</code> with private key in hex without <code>0x</code>)</h5>
+			<pre><code>$ /usr/local/Cellar/openssl/1.0.2n/bin/openssl ec -inform DER -text -noout -in <(cat <(echo -n "302e0201010420") <(echo -n "***") <(echo -n "a00706052b8104000a") | xxd -r -p) 2>/dev/null | tail -6 | head -5 | sed 's/[ :]//g' | tr -d '\n' && echo</code></pre>
+			<br/>
+			<h5>How to add 2 private keys? (replace <code>***</code>'s with private keys in hex without <code>0x</code>)</h5>
+			<pre><code>$ (echo 'ibase=16;obase=10' && (echo '(*** + ***) % FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F' | tr '[:lower:]' '[:upper:]')) | bc</code></pre>
+			<br/>
+			<a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a>
 		</div>
 		<!-- YOUR CONTENT ENDS HERE -->
 		
