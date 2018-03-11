@@ -5376,18 +5376,40 @@ PrivateKey.prototype.toString = function() {
  * @returns {string} A WIP representation of the private key
  */
 PrivateKey.prototype.toWIF = function() {
+  if (this.compressed) {
+    return toCompressedWIF();
+  } else {
+    return toUncompressedWIF();
+  }
+};
+
+/**
+ * Will output the PrivateKey to a WIF string leading to compressed Public Key form
+ *
+ * @returns {string} A WIP representation of the private key
+ */
+PrivateKey.prototype.toCompressedWIF = function() {
   var network = this.network;
   var compressed = this.compressed;
 
-  var buf;
-  if (compressed) {
-    buf = Buffer.concat([new Buffer([network.privatekey]),
-                         this.bn.toBuffer({size: 32}),
-                         new Buffer([0x01])]);
-  } else {
-    buf = Buffer.concat([new Buffer([network.privatekey]),
-                         this.bn.toBuffer({size: 32})]);
-  }
+  buf = Buffer.concat([new Buffer([network.privatekey]),
+                      this.bn.toBuffer({size: 32}),
+                      new Buffer([0x01])]);
+
+  return Base58Check.encode(buf);
+};
+
+/**
+ * Will output the PrivateKey to a WIF string leading to uncompressed Public Key form
+ *
+ * @returns {string} A WIP representation of the private key
+ */
+PrivateKey.prototype.toUncompressedWIF = function() {
+  var network = this.network;
+  var compressed = this.compressed;
+
+  var buf = Buffer.concat([Buffer.from([network.privatekey]),
+                          this.bn.toBuffer({size: 32})]);
 
   return Base58Check.encode(buf);
 };
