@@ -90,8 +90,8 @@ window.addEventListener('load', async function() {
     }
     
     async function getForTask(publicKeyX_dec, publicKeyY_dec, privateKey_dec) {
-	    const publicKey = '04' + web3js.utils.toHex(publicKeyX_dec).substr(2) + web3js.utils.toHex(publicKeyY_dec).substr(2);
-	    const privateKey = web3js.utils.toHex(privateKey_dec).substr(2)
+		const publicKey = '04' + web3js.utils.toBN(publicKeyX_dec).toString(16).toUpperCase() + web3js.utils.toBN(publicKeyY_dec).toString(16).toUpperCase();
+	    const privateKey = web3js.utils.toBN(privateKey_dec).toString(16).toUpperCase();
 	    alert(`Your public key: ${publicKey}\n` +
 	    	  `Found Private Key: ${privateKey}\n` +
 	    	  `You should add this Private Key to your Private Key to produce final Private Key.`);

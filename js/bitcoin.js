@@ -2,7 +2,6 @@ var bitcore = require('bitcore-lib');
 
 //
 
-console.log(bitcore);
 const tempPrivateKey = new bitcore.PrivateKey();
 const tempPublicKey = tempPrivateKey.toPublicKey();
 $('#create_private_key').val(tempPrivateKey.bn.toString(16).toUpperCase());
