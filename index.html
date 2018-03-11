@@ -7,6 +7,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Latest compiled and minified Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<style>
+			.tab-pane {
+			    border-left: 1px solid #ddd;
+			    border-right: 1px solid #ddd;
+			    border-bottom: 1px solid #ddd;
+			    border-radius: 0px 0px 5px 5px;
+			    padding: 10px;
+			}
+			
+			.nav-tabs {
+			    margin-bottom: 0;
+			}
+		</style>
 	</head>
 	<body>
 		<!-- YOUR CONTENT STARTS HERE -->
@@ -115,15 +128,75 @@
 			<h3>Reference</h3>
 			<br/>
 			<h5>How to generate Bitcoin private and public keys?</h5>
-			<pre><code>$ openssl ecparam -genkey -name secp256k1 -text -noout -outform DER | xxd -p -c 1000 | sed 's/41534e31204f49443a20736563703235366b310a30740201010420/PrivKey: /' | sed 's/a00706052b8104000aa144034200/\'$'\nPubKey: /'</code></pre>
-			<pre><code>PrivKey: 1f7ca3635605bc57b579b5fdf73e3ac84aa91a9c8eddc57aa0e3452d1a429ff8
-PubKey: 0403af2a877e578086b277c6aa0622ed1bd0754cac48acdfff6591d235fa517d739ded3fd6b7e6394a4023623d67a35c836f853213d9709033f310996230469917</code></pre>
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix">Linux/macOS</a></li>
+				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows">Windows</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online">Online</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="unix" class="tab-pane active visible">
+					<pre><code>$ openssl ecparam -genkey -name secp256k1 -text -noout -outform DER | xxd -p -c 1000 | sed 's/41534e31204f49443a20736563703235366b310a30740201010420/Private Key: /' | sed 's/a00706052b8104000aa144034200/\'$'\nPublic Key: /'</code></pre>
+					<pre><code>Private Key: ***
+Public Key: 04***</code></pre>
+				</div>
+				<div id="windows" class="tab-pane">
+				</div>
+				<div id="online" class="tab-pane">
+					<label for="create_private_key">Bitcoin Private Key:</label>
+					<input class="form-control" id="create_private_key" pattern="[0-9A-Za-z]{32}"></code>
+					<label for="create_public_key">Bitcoin Public Key:</label>
+					<input disabled class="form-control" id="create_public_key" pattern="04[0-9A-Za-z]{64}"></code>
+					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
+				</div>
+			</div>
 			<br/>
 			<h5>How to generate Bitcoin public key for existing private key? (replace <code>***</code> with private key in hex without <code>0x</code>)</h5>
-			<pre><code>$ /usr/local/Cellar/openssl/1.0.2n/bin/openssl ec -inform DER -text -noout -in <(cat <(echo -n "302e0201010420") <(echo -n "***") <(echo -n "a00706052b8104000a") | xxd -r -p) 2>/dev/null | tail -6 | head -5 | sed 's/[ :]//g' | tr -d '\n' && echo</code></pre>
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix2">Linux/macOS</a></li>
+				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows2">Windows</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online2">Online</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="unix2" class="tab-pane active visible">
+					<pre><code>$ /usr/local/Cellar/openssl/1.0.2n/bin/openssl ec -inform DER -text -noout -in <(cat <(echo -n "302e0201010420") <(echo -n "***") <(echo -n "a00706052b8104000a") | xxd -r -p) 2>/dev/null | tail -6 | head -5 | sed 's/[ :]//g' | tr -d '\n' && echo</code></pre>
+					<pre><code>Public Key: ***</code></pre>
+				</div>
+				<div id="windows2" class="tab-pane">
+				</div>
+				<div id="online2" class="tab-pane">
+					<label for="create_private_key">Bitcoin Private Key:</label>
+					<input class="form-control" id="create_private_key_2" pattern="[0-9A-Za-z]{32}"></code>
+					<label for="create_public_key">Bitcoin Public Key:</label>
+					<input disabled class="form-control" id="create_public_key_2" pattern="04[0-9A-Za-z]{64}"></code>
+					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
+				</div>
+			</div>
 			<br/>
 			<h5>How to add 2 private keys? (replace <code>***</code>'s with private keys in hex without <code>0x</code>)</h5>
-			<pre><code>$ (echo 'ibase=16;obase=10' && (echo '(*** + ***) % FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F' | tr '[:lower:]' '[:upper:]')) | bc</code></pre>
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix3">Linux/macOS</a></li>
+				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows3">Windows</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online3">Online</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="unix3" class="tab-pane active visible">
+					<pre><code>$ (echo 'ibase=16;obase=10' && (echo '(*** + ***) % FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F' | tr '[:lower:]' '[:upper:]')) | bc</code></pre>
+					<pre><code>Private Key: ***</code></pre>
+				</div>
+				<div id="windows3" class="tab-pane">
+				</div>
+				<div id="online3" class="tab-pane">
+					<label for="add_private_key_1">Bitcoin Private Key 1:</label>
+					<input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}"></code>
+					<label for="add_private_key_2">Bitcoin Private Key 2:</label>
+					<input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}"></code>
+					<label for="add_private_key_3">Bitcoin Private Key Sum:</label>
+					<input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}"></code>
+					<label for="add_private_key_3_wif">Bitcoin Private Key Sum in WIF format:</label>
+					<input disabled class="form-control" id="add_private_key_3_wif" pattern="[0-9A-Za-z]{32}"></code>
+					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
+				</div>
+			</div>
 			<br/>
 			<a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a>
 		</div>
@@ -143,5 +216,9 @@ PubKey: 0403af2a877e578086b277c6aa0622ed1bd0754cac48acdfff6591d235fa517d739ded3f
 		
 		<!-- Latest compiled and minified Bootstrap JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		<!-- Bitcoin library -->
+		<script src="./js/bitcore-lib.js"></script>
+		<script src="./js/bitcoin.js"></script>
 	</body>
 </html>
