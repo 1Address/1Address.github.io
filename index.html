@@ -14,8 +14,7 @@
 			    border-bottom: 1px solid #ddd;
 			    border-radius: 0px 0px 5px 5px;
 			    padding: 10px;
-			}
-			
+			}			
 			.nav-tabs {
 			    margin-bottom: 0;
 			}
@@ -25,7 +24,10 @@
 		<!-- YOUR CONTENT STARTS HERE -->
 		<div style="background-color: green" width="100%">
 			<div class="container-fluid">
-				<p id="account"><a href="https://metamask.io">Get MetaMask!</a></p>
+				<div class="d-flex flex-row">
+					<div id="account" class="p-2"><a style="color:#ffffff" href="https://metamask.io">Get MetaMask!</a></div>
+					<div id="balances" class="p-2"></div>
+				</div>
 			</div>
 		</div>
 		<div class="container-fluid">
@@ -67,8 +69,7 @@
 			</div>
 			<br/>
     		<h3>Create task</h3>
-    		<!-- <form action="javascript:createTask()"> -->
-            <div class="row">
+    		<div class="row">
                 <div class="col-sm-6">
                     <fieldset class="form-group">
                         <label for="btc_prefix">Bitcoin Address Prefix:</label>
@@ -114,7 +115,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <fieldset class="form-group">
-                        <label for="btc_publickey">Bitcoin Public Key:</label>
+                        <label for="btc_publickey">Bitcoin Public Key (hex):</label>
                         <input type="text" class="form-control" id="btc_publickey" name="btc_publickey">
                     </fieldset>
                 </div>
@@ -127,7 +128,7 @@
 			<br/>
 			<h3>Reference</h3>
 			<br/>
-			<h5>How to generate Bitcoin private and public keys?</h5>
+			<h5>First you need to generate Bitcoin secret private and public keys</h5>
 			<ul class="nav nav-tabs">
 				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix">Linux/macOS</a></li>
 				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows">Windows</a></li>
@@ -150,7 +151,7 @@ Public Key: 04***</code></pre>
 				</div>
 			</div>
 			<br/>
-			<h5>How to generate Bitcoin public key for existing private key? (replace <code>***</code> with private key in hex without <code>0x</code>)</h5>
+			<h5>Or you can derive public key from existing secret private key (replace <code>***</code> with private key in hex without <code>0x</code>)</h5>
 			<ul class="nav nav-tabs">
 				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix2">Linux/macOS</a></li>
 				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows2">Windows</a></li>
@@ -172,7 +173,7 @@ Public Key: 04***</code></pre>
 				</div>
 			</div>
 			<br/>
-			<h5>How to add 2 private keys? (replace <code>***</code>'s with private keys in hex without <code>0x</code>)</h5>
+			<h5>At the end you need to add your secret private key and found private key (replace <code>***</code>'s with private keys in hex without <code>0x</code>)</h5>
 			<ul class="nav nav-tabs">
 				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix3">Linux/macOS</a></li>
 				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows3">Windows</a></li>
@@ -187,21 +188,67 @@ Public Key: 04***</code></pre>
 				</div>
 				<div id="online3" class="tab-pane">
 					<label for="add_private_key_1">Bitcoin Private Key 1:</label>
-					<input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}"></code>
+					<input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}"></input>
 					<label for="add_private_key_2">Bitcoin Private Key 2:</label>
-					<input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}"></code>
+					<input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}"></input>
 					<label for="add_private_key_3">Bitcoin Private Key Sum:</label>
-					<input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}"></code>
+					<input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}"></input>
 					<label for="add_private_key_wif">Bitcoin Private Key Sum in WIF format:</label>
-					<input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}"></code>
+					<input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}"></input>
 					<label for="add_private_key_address">Bitcoin Address:</label>
-					<input disabled class="form-control" id="add_private_key_address"></code>
+					<input disabled class="form-control" id="add_private_key_address"></input>
 					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
 				</div>
 			</div>
 			<br/>
 			<a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a>
 		</div>
+		<!-- MODALS -->
+        <div id="txModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Transaction details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="tx_to">Contract address:</label>
+                        <div class="input-group mb-3">
+                            <input disabled class="form-control" id="tx_to" aria-describedby="basic-addon2"></input>
+                            <div class="input-group-append">
+                                <button id="tx_to_copy" class="btn btn-outline-secondary" type="button">Copy</button>
+                            </div>
+                        </div>
+                        <label for="tx_value">Value:</label>
+                        <div class="input-group mb-3">
+                            <input disabled class="form-control" id="tx_value" aria-describedby="basic-addon2"></input>
+                            <div class="input-group-append">
+                                <button id="tx_value_copy" class="btn btn-outline-secondary" type="button">Copy</button>
+                            </div>
+                        </div>
+                        <label for="tx_data">Data:</label>
+                        <div class="input-group mb-3">
+                            <textarea disabled rows="3" style="height:auto" class="form-control" id="tx_data" aria-describedby="basic-addon2"></textarea>
+                            <div class="input-group-append">
+                                <button id="tx_data_copy" class="btn btn-outline-secondary" type="button">Copy</button>
+                            </div>
+                        </div>
+                        <label for="tx_data">Gas:</label>
+                        <div class="input-group mb-3">
+                            <input disabled class="form-control" id="tx_gas" aria-describedby="basic-addon2"></input>
+                            <div class="input-group-append">
+                                <button id="tx_gas_copy" class="btn btn-outline-secondary" type="button">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 		<!-- YOUR CONTENT ENDS HERE -->
 		
 		<!-- JavaScript: placed at the end of the document so the pages load faster -->
