@@ -24,9 +24,37 @@
 		<!-- YOUR CONTENT STARTS HERE -->
 		<div style="background-color: green" width="100%">
 			<div class="container-fluid">
-				<div class="d-flex flex-row">
+				<div class="d-flex flex-row align-items-center">
 					<div id="account" class="p-2"><a style="color:#ffffff" href="https://metamask.io">Get MetaMask!</a></div>
 					<div id="balances" class="p-2"></div>
+                    <div class="ml-auto p-2">
+                        <a style="color:#ffffff" href="https://etherdelta.com/#0x7777777c85Eb309d937BddC80D74EeAe7205503a-ETH">Buy on EtherDelta</a>
+                    </div>
+                    <div class="p-2">
+                        <div style="color:#ffffff"> or </div> 
+                    </div>
+                    <div class="p-2" style="width:150px">
+						<div class="input-group">
+                            <input type="text" class="form-control input-sm" id="ex_vip">
+                            <div class="input-group-append">
+								<span class="input-group-text" id="basic-addon2">VIP</span>
+  							</div>
+                        </div>
+					</div>
+					<div class="p-0">
+						<h4 style="color:#ffffff">=</h4>
+					</div>
+					<div class="p-2" style="width:150px">
+						<div class="input-group">
+                            <input disabled type="text" class="form-control input-sm" id="ex_eth">
+                            <div class="input-group-append">
+								<span class="input-group-text" id="basic-addon2">ETH</span>
+  							</div>
+                        </div>
+					</div>
+					<div class="p-2">
+						<button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -188,15 +216,15 @@ Public Key: 04***</code></pre>
 				</div>
 				<div id="online3" class="tab-pane">
 					<label for="add_private_key_1">Bitcoin Private Key 1:</label>
-					<input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}"></input>
+					<input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}">
 					<label for="add_private_key_2">Bitcoin Private Key 2:</label>
-					<input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}"></input>
+					<input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}">
 					<label for="add_private_key_3">Bitcoin Private Key Sum:</label>
-					<input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}"></input>
+					<input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}">
 					<label for="add_private_key_wif">Bitcoin Private Key Sum in WIF format:</label>
-					<input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}"></input>
+					<input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}">
 					<label for="add_private_key_address">Bitcoin Address:</label>
-					<input disabled class="form-control" id="add_private_key_address"></input>
+					<input disabled class="form-control" id="add_private_key_address">
 					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
 				</div>
 			</div>
@@ -216,14 +244,14 @@ Public Key: 04***</code></pre>
                     <div class="modal-body">
                         <label for="tx_to">Contract address:</label>
                         <div class="input-group mb-3">
-                            <input disabled class="form-control" id="tx_to" aria-describedby="basic-addon2"></input>
+                            <input disabled class="form-control" id="tx_to" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="tx_to_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
                         </div>
-                        <label for="tx_value">Value:</label>
+                        <label for="tx_value">Value (ETH):</label>
                         <div class="input-group mb-3">
-                            <input disabled class="form-control" id="tx_value" aria-describedby="basic-addon2"></input>
+                            <input disabled class="form-control" id="tx_value" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="tx_value_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
@@ -237,7 +265,7 @@ Public Key: 04***</code></pre>
                         </div>
                         <label for="tx_data">Gas:</label>
                         <div class="input-group mb-3">
-                            <input disabled class="form-control" id="tx_gas" aria-describedby="basic-addon2"></input>
+                            <input disabled class="form-control" id="tx_gas" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="tx_gas_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
