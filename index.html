@@ -28,12 +28,12 @@
 					<div id="account" class="p-2"><a style="color:#ffffff" href="https://metamask.io">Get MetaMask!</a></div>
 					<div id="balances" class="p-2"></div>
                     <div class="ml-auto p-2">
-                        <a style="color:#ffffff" href="https://etherdelta.com/#0x7777777c85Eb309d937BddC80D74EeAe7205503a-ETH">Buy on EtherDelta</a>
+                        <a style="color:#ffffff" href="https://etherdelta.com/#0x7777777c85Eb309d937BddC80D74EeAe7205503a-ETH">Buy VIP coins on EtherDelta</a>
                     </div>
-                    <div class="p-2">
+                    <div style="display:none" class="exchangeClass p-2">
                         <div style="color:#ffffff"> or </div> 
                     </div>
-                    <div class="p-2" style="width:150px">
+                    <div style="display:none; width:150px" class="exchangeClass p-2">
 						<div class="input-group">
                             <input type="text" class="form-control input-sm" id="ex_vip">
                             <div class="input-group-append">
@@ -41,10 +41,10 @@
   							</div>
                         </div>
 					</div>
-					<div class="p-0">
+					<div style="display:none" class="exchangeClass p-0">
 						<h4 style="color:#ffffff">=</h4>
 					</div>
-					<div class="p-2" style="width:150px">
+					<div style="display:none; width:150px" class="exchangeClass p-2">
 						<div class="input-group">
                             <input disabled type="text" class="form-control input-sm" id="ex_eth">
                             <div class="input-group-append">
@@ -52,7 +52,7 @@
   							</div>
                         </div>
 					</div>
-					<div class="p-2">
+					<div style="display:none" class="exchangeClass p-2">
 						<button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
 					</div>
 				</div>
@@ -228,10 +228,28 @@ Public Key: 04***</code></pre>
 					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
 				</div>
 			</div>
+            <br/>
+            <h5>How cancel task or reduce task reward?</h5>
+            <div>Completelly not possible. You task will became more and more valuable during time with the VIP/USD rate growing.</div>
+            <br/>
+            <h5>How to mine tasks and earn VIP coins?</h5>
+            <div>Just configure and run this software: <a href="https://github.com/VipCo-in/VipCoinMiner">https://github.com/VipCo-in/VipCoinMiner</a></div>
 			<br/>
 			<a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a>
 		</div>
 		<!-- MODALS -->
+        <div id="txPending" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-m">
+                <div class="modal-content">
+                    <div class="modal-header">Pending transaction...</div>
+                    <div class="modal-body">
+                        <div class="progress active mb-0">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="txModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">

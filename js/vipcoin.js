@@ -109,14 +109,14 @@ window.addEventListener('load', async function() {
                     let url = explorerUrl + 'tx/' + hash;
                     console.log(`Sending transaction ${url}`);
                     window.open(url, '_blank').focus();
-                    alert(`Buying VIP coins, wait for transaction to be mined! ${url}`);
+                    $('#txPending').modal('show');
                 })
                 .on('error', function(error) {
                     console.error(error);
                 })
                 .then(function(receipt) {
                     console.log('Transaction was mined: ' + receipt);
-                    Location.reload();
+                    $('#txPending').modal('hide');
                 });
         } else {
             const fullData = exchange.methods.buy().encodeABI();
@@ -200,14 +200,14 @@ window.addEventListener('load', async function() {
                     let url = explorerUrl + 'tx/' + hash;
                     console.log(`Sending transaction ${url}`);
                     window.open(url, '_blank').focus();
-                    alert(`Creating task, wait for transaction to be mined! ${url}`);
+                    $('#txPending').modal('show');
                 })
                 .on('error', function(error) {
                     console.error(error);
                 })
                 .then(function(receipt) {
                     console.log('Transaction was mined: ' + receipt);
-                    Location.reload();
+                    $('#txPending').modal('hide');
                 });
         } else {
             const fullData = token.methods.approve(contract.options.address, btc_reward, data).encodeABI();
@@ -230,14 +230,14 @@ window.addEventListener('load', async function() {
                     let url = explorerUrl + 'tx/' + hash;
                     console.log(`Sending transaction ${url}`);
                     window.open(url, '_blank').focus();
-                    alert(`Paying for task, wait for transaction to be mined! ${url}`);
+                    $('#txPending').modal('show');
                 })
                 .on('error', function(error) {
                     console.error(error);
                 })
                 .then(function(receipt) {
                     console.log('Transaction was mined: ' + receipt);
-                    Location.reload();
+                    $('#txPending').modal('hide');
                 });
         } else {
             const fullData = token.methods.approve(contract.options.address, amount, data).encodeABI();
@@ -342,9 +342,6 @@ window.addEventListener('load', async function() {
     await accountPromise;
     accountPromiseDone = null;
     
-    // Exchange
-    exchange = new web3js.eth.Contract(exchange_abi, exchangeAddress);
-
     // Move to latest contract
     let contracts = []
     contract = new web3js.eth.Contract(contract_abi, contractAddress);
@@ -356,6 +353,13 @@ window.addEventListener('load', async function() {
         console.log('Upgraded contract to next version: ' + contract.options.address);
     }
     token = new web3js.eth.Contract(token_abi, (await contract.methods.token().call()));
+
+    // Exchange
+    exchange = new web3js.eth.Contract(exchange_abi, exchangeAddress);
+    const vipCoinsOnExchange = await token.methods.balanceOf(exchangeAddress).call();
+    if (vipCoinsOnExchange > 100 * 10**18) {
+        $('.exchangeClass').css('display', 'block');
+    }
 
     // Fetching active tasks
     
