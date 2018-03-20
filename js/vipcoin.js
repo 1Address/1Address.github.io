@@ -316,7 +316,7 @@ window.addEventListener('load', async function() {
                 if (account && (ethBalance2 != ethBalance || vipBalance2 != vipBalance)) {
                     ethBalance = ethBalance2;
                     vipBalance = vipBalance2;
-                    $('#balances').html('<code style="color:#ffffff">(' + (ethBalance / 10**18).toFixed(4) + ' ETH' + ', ' + (vipBalance >= 0 ? (vipBalance / 10**18).toFixed(4) : '--.----') + ' VIP)</code>');
+                    $('#balances').html('<code style="color:#ffffff">Balances: ' + (ethBalance / 10**18).toFixed(4) + ' ETH' + ', ' + (vipBalance >= 0 ? (vipBalance / 10**18).toFixed(4) : '--.----') + ' VIP</code>');
                 }
             }
             
