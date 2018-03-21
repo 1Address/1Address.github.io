@@ -1,4 +1,4 @@
-const ethnet = (new URL(window.location.href)).searchParams.get("net") || 'ropsten';
+const ethnet = (new URL(window.location.href)).searchParams.get("net") || 'mainnet';
 
 const nodeUrl = {
     'mainnet':'wss://mainnet.infura.io/ws',
@@ -9,11 +9,11 @@ const explorerUrl = {
     'ropsten':'https://ropsten.etherscan.io/',
 }[ethnet];
 const contractAddress = {
-    'mainnet':'0x0',
+    'mainnet':'0x33116DB6C6942903653E74d9580f0f7c7aBe1cbE',
     'ropsten':'0x16b0e794fEb8C4008C62269134908b12C6Ed5750',
 }[ethnet];
 const exchangeAddress = {
-    'mainnet':'0x0',
+    'mainnet':'0xeC50aFffc4dC23b629C74c0998D16209c6398F6E',
     'ropsten':'0x305A0Ba5fB1a53A5185388C8b81485b264fA1D1b',
 }[ethnet];
 
