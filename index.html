@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Latest compiled and minified Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 		<style>
 			.tab-pane {
 			    border-left: 1px solid #ddd;
@@ -240,7 +241,86 @@ Public Key: 04***</code></pre>
 			<a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a> – <a href="https://t.me/VipCoinInfo">Telegram Channel</a> – <a href="https://t.me/VipCoinChat">Telegram Chat</a>
             <br/>
 		</div>
-		<!-- MODALS -->
+		
+        <!-- MODALS -->
+
+        <div id="modalAnswer" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Task Result</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <fieldset class="form-group">
+                                    <label for="ans_prefix">Bitcoin Address Prefix:</label>
+                                    <input disabled type="text" class="form-control" id="ans_prefix">
+                                </fieldset>
+                           	</div>
+                            <div class="col-sm-6">
+                                <fieldset class="form-group">
+                                    <label for="ans_difficulty">Difficulty:</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">GH</span>
+                                        </div>
+                                        <input disabled type="text" class="form-control" id="ans_difficulty">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <fieldset class="form-group">
+                                    <label for="ans_reward">Reward:</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">VIP</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="ans_reward">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-sm-6">
+                                <fieldset class="form-group">
+                                    <label for="ans_price">Price:</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">VIP/GH</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="ans_price">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <fieldset class="form-group">
+                                    <label for="ans_publickey">Bitcoin Public Key (hex):</label>
+                                    <input type="text" class="form-control" id="ans_publickey">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <fieldset class="form-group">
+                                    <label for="ans_privatekey">Bitcoin Private Key <b>Part</b> (hex):</label>
+                                    <input type="text" class="form-control" id="ans_privatekey">
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="txPending" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-m">
                 <div class="modal-content">
@@ -253,6 +333,7 @@ Public Key: 04***</code></pre>
                 </div>
             </div>
         </div>
+
         <div id="txModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
@@ -302,10 +383,6 @@ Public Key: 04***</code></pre>
 		
 		<!-- JavaScript: placed at the end of the document so the pages load faster -->
 		
-		<!-- Web3js library -->
-		<script src="./js/web3.min.js"></script>
-		<script src="./js/vipcoin.js"></script>
-		
 		<!-- jQuery library -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		
@@ -314,9 +391,17 @@ Public Key: 04***</code></pre>
 		
 		<!-- Latest compiled and minified Bootstrap JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		
-		<!-- Bitcoin library -->
-		<script src="./js/bitcore-lib.js"></script>
-		<script src="./js/bitcoin.js"></script>
+
+        <!-- DataTables -->
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+        <!-- Web3js library -->
+        <script src="./js/web3.min.js"></script>
+        <script src="./js/vipcoin.js"></script>
+
+        <!-- Bitcoin library -->
+        <script src="./js/bitcore-lib.js"></script>
+        <script src="./js/bitcoin.js"></script>
 	</body>
 </html>

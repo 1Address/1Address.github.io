@@ -250,12 +250,14 @@ window.addEventListener('load', async function() {
         }
     }
     
-    async function getForTask(publicKeyX_dec, publicKeyY_dec, privateKey_dec) {
-        const publicKey = '04' + web3js.utils.toBN(publicKeyX_dec).toString(16, 64).toUpperCase() + web3js.utils.toBN(publicKeyY_dec).toString(16, 64).toUpperCase();
-        const privateKey = web3js.utils.toBN(privateKey_dec).toString(16, 64).toUpperCase();
-        alert(`Your public key: ${publicKey}\n` +
-              `Found Private Key: ${privateKey}\n` +
-              `You should add this Private Key to your Private Key to produce final Private Key.`);
+    async function getForTask(task) {
+        $('#ans_prefix').val(task.prefix);
+        $('#ans_difficulty').val(task.difficulty / 10**9);
+        $('#ans_reward').val(task.reward / 10**18);
+        $('#ans_price').val(task.price / 10**9);
+        $('#ans_publickey').val('04' + web3js.utils.toBN(task.requestPublicXPoint).toString(16, 64).toUpperCase() + web3js.utils.toBN(task.requestPublicYPoint).toString(16, 64).toUpperCase());
+        $('#ans_privatekey').val(web3js.utils.toBN(task.answerPrivateKey).toString(16, 64).toUpperCase());
+        $('#modalAnswer').modal('show');
     }
 
     // https://gist.github.com/brandonaaskov/1596867
@@ -409,6 +411,9 @@ window.addEventListener('load', async function() {
             payForTask(task.taskId, $('#' + payInputId).val());
         });
     }
+    $('#tasks').DataTable({
+        "order": [[ 4, "desc" ]]
+    });
     
     // Fetching completed tasks
     
@@ -448,9 +453,10 @@ window.addEventListener('load', async function() {
                 `<td>` + getButtonHTML + '</td>' +
             '</tr>'
         );
+        $('#completed-tasks').DataTable();
         
         $('#' + getButtonId).click(function() {
-            getForTask(task.requestPublicXPoint, task.requestPublicYPoint, task.answerPrivateKey);
+            getForTask(task);
         });
     }
 });
