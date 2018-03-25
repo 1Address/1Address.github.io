@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>VipCoin</title>
-		<meta charset="utf-8">
-		<!-- Viewport Meta Tag -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Latest compiled and minified Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <head>
+        <title>VipCoin</title>
+        <meta charset="utf-8">
+        <!-- Viewport Meta Tag -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Latest compiled and minified Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-		<style>
-			.tab-pane {
-			    border-left: 1px solid #ddd;
-			    border-right: 1px solid #ddd;
-			    border-bottom: 1px solid #ddd;
-			    border-radius: 0px 0px 5px 5px;
-			    padding: 10px;
-			}			
-			.nav-tabs {
-			    margin-bottom: 0;
-			}
-		</style>
-	</head>
-	<body>
-		<!-- YOUR CONTENT STARTS HERE -->
-		<div style="background-color: green" width="100%">
-			<div class="container-fluid">
-				<div class="d-flex flex-wrap align-items-center">
+        <style>
+            .tab-pane {
+                border-left: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                border-radius: 0px 0px 5px 5px;
+                padding: 10px;
+            }
+            .nav-tabs {
+                margin-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- YOUR CONTENT STARTS HERE -->
+        <div style="background-color: green" width="100%">
+            <div class="container-fluid">
+                <div class="d-flex flex-wrap align-items-center">
                     <div>
-					   <div id="account" class="p-0"><a style="color:#ffffff" href="https://metamask.io">Get MetaMask!</a></div>
-					   <div id="balances" class="p-0"></div>
+                       <div id="account" class="p-0"><a style="color:#ffffff" href="https://metamask.io">Get MetaMask!</a></div>
+                       <div id="balances" class="p-0"></div>
                     </div>
                     <div class="ml-auto p-2">
                         <a style="color:#ffffff" href="https://etherdelta.com/#0x7777777c85Eb309d937BddC80D74EeAe7205503a-ETH">Buy VIP coins on EtherDelta</a>
                     </div>
                     <div style="display:none" class="exchangeClass p-1">
-                        <div style="color:#ffffff"> or </div> 
+                        <div style="color:#ffffff"> or </div>
                     </div>
                     <div style="display:none" class="exchangeClass d-flex flex-row">
-						<div style="display:none; width:100px" class="exchangeClass input-group align-self-center p-1">
+                        <div style="display:none; width:100px" class="exchangeClass input-group align-self-center p-1">
                             <input type="text" class="form-control input-sm px-1" id="ex_vip">
                             <div class="input-group-append">
-								<span class="input-group-text px-2" id="basic-addon2">VIP</span>
-  							</div>
+                                <span class="input-group-text px-2" id="basic-addon2">VIP</span>
+                              </div>
                         </div>
-						<div style="display:none" class="exchangeClass align-self-center p-0">
-							<h4 style="color:#ffffff">=</h4>
-						</div>
-						<div style="display:none; width:130px" class="exchangeClass input-group align-self-center p-1">
+                        <div style="display:none" class="exchangeClass align-self-center p-0">
+                            <h4 style="color:#ffffff">=</h4>
+                        </div>
+                        <div style="display:none; width:130px" class="exchangeClass input-group align-self-center p-1">
                             <input disabled type="text" class="form-control input-sm px-1" id="ex_eth">
                             <div class="input-group-append">
-								<span class="input-group-text px-2" id="basic-addon2">ETH</span>
-  							</div>
+                                <span class="input-group-text px-2" id="basic-addon2">ETH</span>
+                              </div>
                         </div>
-						<div style="display:none" class="exchangeClass align-self-center p-2">
-							<button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid">
-			<br/>
-			<h3>Active tasks</h3>
-    		<div class="table-responsive">
-    			<table id="tasks" class="table table-sm table-striped table-bordered table-hover">
-    				<thead class="thead-light">
-    					<tr>
-    						<th>Id</th>
-    						<th>Prefix</th>
-    						<th>Reward</th>
-    						<th>Difficulty</th>
-    						<th>Price</th>
-    						<th style="width:15%">Pay</th>
-    					</tr>
-    				</thead>
-    				<tbody>
-    				</tbody>
-    			</table>
-    		</div>
-    		<br/>
-    		<h3>Solved tasks</h3>
-			<div class="table-responsive">
-				<table id="completed-tasks" class="table table-sm table-striped table-bordered table-hover">
-					<thead class="thead-light">
-						<tr>
-							<th>Id</th>
-							<th>Prefix</th>
-							<th>Reward</th>
-							<th>Difficulty</th>
-							<th>Price</th>
-							<th style="width:15%">Get</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
-			<br/>
-    		<h3>Create task</h3>
-    		<div class="row">
+                        <div style="display:none" class="exchangeClass align-self-center p-2">
+                            <button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <br/>
+            <h3>Active tasks</h3>
+            <div class="table-responsive">
+                <table id="tasks" class="table table-sm table-striped table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Id</th>
+                            <th>Prefix</th>
+                            <th>Reward</th>
+                            <th>Difficulty</th>
+                            <th>Price</th>
+                            <th style="width:15%">Pay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <h3>Solved tasks</h3>
+            <div class="table-responsive">
+                <table id="completed-tasks" class="table table-sm table-striped table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Id</th>
+                            <th>Prefix</th>
+                            <th>Reward</th>
+                            <th>Difficulty</th>
+                            <th>Price</th>
+                            <th style="width:15%">Get</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <h3>Create task</h3>
+            <div class="row">
                 <div class="col-sm-6">
                     <fieldset class="form-group">
                         <label for="btc_prefix">Bitcoin Address Prefix:</label>
@@ -154,92 +154,92 @@
                     <button type="submit" class="btn btn-primary" id="create">Create</button>
                 </div>
             </div>
-			<br/>
-			<h3>Reference</h3>
-			<br/>
-			<h5>First you need to generate Bitcoin secret private and public keys</h5>
-			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix">Linux/macOS</a></li>
-				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows">Windows</a></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online">Online</a></li>
-			</ul>
-			<div class="tab-content">
-				<div id="unix" class="tab-pane active visible">
-					<pre><code>$ openssl ecparam -genkey -name secp256k1 -text -noout -outform DER | xxd -p -c 1000 | sed 's/41534e31204f49443a20736563703235366b310a30740201010420/Private Key: /' | sed 's/a00706052b8104000aa144034200/\'$'\nPublic Key: /'</code></pre>
-					<pre><code>Private Key: ***
+            <br/>
+            <h3>Reference</h3>
+            <br/>
+            <h5>First you need to generate Bitcoin secret private and public keys</h5>
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix">Linux/macOS</a></li>
+                <li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows">Windows</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online">Online</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="unix" class="tab-pane active visible">
+                    <pre><code>$ openssl ecparam -genkey -name secp256k1 -text -noout -outform DER | xxd -p -c 1000 | sed 's/41534e31204f49443a20736563703235366b310a30740201010420/Private Key: /' | sed 's/a00706052b8104000aa144034200/\'$'\nPublic Key: /'</code></pre>
+                    <pre><code>Private Key: ***
 Public Key: 04***</code></pre>
-				</div>
-				<div id="windows" class="tab-pane">
-				</div>
-				<div id="online" class="tab-pane">
-					<label for="create_private_key">Bitcoin Private Key:</label>
-					<input class="form-control" id="create_private_key" pattern="[0-9A-Za-z]{32}"></code>
-					<label for="create_public_key">Bitcoin Public Key:</label>
-					<input disabled class="form-control" id="create_public_key" pattern="04[0-9A-Za-z]{64}"></code>
-					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
-				</div>
-			</div>
-			<br/>
-			<h5>Or you can derive public key from existing secret private key (replace <code>***</code> with private key in hex without <code>0x</code>)</h5>
-			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix2">Linux/macOS</a></li>
-				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows2">Windows</a></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online2">Online</a></li>
-			</ul>
-			<div class="tab-content">
-				<div id="unix2" class="tab-pane active visible">
-					<pre><code>$ /usr/local/Cellar/openssl/1.0.2n/bin/openssl ec -inform DER -text -noout -in <(cat <(echo -n "302e0201010420") <(echo -n "***") <(echo -n "a00706052b8104000a") | xxd -r -p) 2>/dev/null | tail -6 | head -5 | sed 's/[ :]//g' | tr -d '\n' && echo</code></pre>
-					<pre><code>Public Key: ***</code></pre>
-				</div>
-				<div id="windows2" class="tab-pane">
-				</div>
-				<div id="online2" class="tab-pane">
-					<label for="create_private_key">Bitcoin Private Key:</label>
-					<input class="form-control" id="create_private_key_2" pattern="[0-9A-Za-z]{32}"></code>
-					<label for="create_public_key">Bitcoin Public Key:</label>
-					<input disabled class="form-control" id="create_public_key_2" pattern="04[0-9A-Za-z]{64}"></code>
-					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
-				</div>
-			</div>
-			<br/>
-			<h5>At the end you need to add your secret private key and found private key (replace <code>***</code>'s with private keys in hex without <code>0x</code>)</h5>
-			<ul class="nav nav-tabs">
-				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix3">Linux/macOS</a></li>
-				<li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows3">Windows</a></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online3">Online</a></li>
-			</ul>
-			<div class="tab-content">
-				<div id="unix3" class="tab-pane active visible">
-					<pre><code>$ (echo 'ibase=16;obase=10' && (echo '(*** + ***) % FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F' | tr '[:lower:]' '[:upper:]')) | bc</code></pre>
-					<pre><code>Private Key: ***</code></pre>
-				</div>
-				<div id="windows3" class="tab-pane">
-				</div>
-				<div id="online3" class="tab-pane">
-					<label for="add_private_key_1">Bitcoin Private Key 1:</label>
-					<input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}">
-					<label for="add_private_key_2">Bitcoin Private Key 2:</label>
-					<input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}">
-					<label for="add_private_key_3">Bitcoin Private Key Sum:</label>
-					<input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}">
-					<label for="add_private_key_wif">Bitcoin Private Key Sum in WIF format:</label>
-					<input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}">
-					<label for="add_private_key_address">Bitcoin Address:</label>
-					<input disabled class="form-control" id="add_private_key_address">
-					<p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
-				</div>
-			</div>
+                </div>
+                <div id="windows" class="tab-pane">
+                </div>
+                <div id="online" class="tab-pane">
+                    <label for="create_private_key">Bitcoin Private Key:</label>
+                    <input class="form-control" id="create_private_key" pattern="[0-9A-Za-z]{32}"></code>
+                    <label for="create_public_key">Bitcoin Public Key:</label>
+                    <input disabled class="form-control" id="create_public_key" pattern="04[0-9A-Za-z]{64}"></code>
+                    <p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
+                </div>
+            </div>
+            <br/>
+            <h5>Or you can derive public key from existing secret private key (replace <code>***</code> with private key in hex without <code>0x</code>)</h5>
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix2">Linux/macOS</a></li>
+                <li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows2">Windows</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online2">Online</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="unix2" class="tab-pane active visible">
+                    <pre><code>$ /usr/local/Cellar/openssl/1.0.2n/bin/openssl ec -inform DER -text -noout -in <(cat <(echo -n "302e0201010420") <(echo -n "***") <(echo -n "a00706052b8104000a") | xxd -r -p) 2>/dev/null | tail -6 | head -5 | sed 's/[ :]//g' | tr -d '\n' && echo</code></pre>
+                    <pre><code>Public Key: ***</code></pre>
+                </div>
+                <div id="windows2" class="tab-pane">
+                </div>
+                <div id="online2" class="tab-pane">
+                    <label for="create_private_key">Bitcoin Private Key:</label>
+                    <input class="form-control" id="create_private_key_2" pattern="[0-9A-Za-z]{32}"></code>
+                    <label for="create_public_key">Bitcoin Public Key:</label>
+                    <input disabled class="form-control" id="create_public_key_2" pattern="04[0-9A-Za-z]{64}"></code>
+                    <p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
+                </div>
+            </div>
+            <br/>
+            <h5>At the end you need to add your secret private key and found private key (replace <code>***</code>'s with private keys in hex without <code>0x</code>)</h5>
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#unix3">Linux/macOS</a></li>
+                <li class="nav-item"><a class="nav-link disabled" data-toggle="tab" href="#windows3">Windows</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#online3">Online</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="unix3" class="tab-pane active visible">
+                    <pre><code>$ (echo 'ibase=16;obase=10' && (echo '(*** + ***) % FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F' | tr '[:lower:]' '[:upper:]')) | bc</code></pre>
+                    <pre><code>Private Key: ***</code></pre>
+                </div>
+                <div id="windows3" class="tab-pane">
+                </div>
+                <div id="online3" class="tab-pane">
+                    <label for="add_private_key_1">Bitcoin Private Key 1:</label>
+                    <input class="form-control" id="add_private_key_1" pattern="[0-9A-Za-z]{32}">
+                    <label for="add_private_key_2">Bitcoin Private Key 2:</label>
+                    <input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}">
+                    <label for="add_private_key_3">Bitcoin Private Key Sum:</label>
+                    <input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}">
+                    <label for="add_private_key_wif">Bitcoin Private Key Sum in WIF format:</label>
+                    <input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}">
+                    <label for="add_private_key_address">Bitcoin Address:</label>
+                    <input disabled class="form-control" id="add_private_key_address">
+                    <p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
+                </div>
+            </div>
             <br/>
             <h5>How cancel task or reduce task reward?</h5>
             <div>Completelly not possible. You task will became more and more valuable during time with the VIP/USD rate growing.</div>
             <br/>
             <h5>How to mine tasks and earn VIP coins?</h5>
             <div>Just configure and run this software: <a href="https://github.com/VipCo-in/VipCoinMiner">https://github.com/VipCo-in/VipCoinMiner</a></div>
-			<br/>
-			<a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a> – <a href="https://t.me/VipCoinInfo">Telegram Channel</a> – <a href="https://t.me/VipCoinChat">Telegram Chat</a>
             <br/>
-		</div>
-		
+            <a href="http://gobittest.appspot.com/Address">Online Bitcoin Calc</a> – <a href="https://t.me/VipCoinInfo">Telegram Channel</a> – <a href="https://t.me/VipCoinChat">Telegram Chat</a>
+            <br/>
+        </div>
+
         <!-- MODALS -->
 
         <div id="modalAnswer" class="modal" tabindex="-1" role="dialog">
@@ -258,7 +258,7 @@ Public Key: 04***</code></pre>
                                     <label for="ans_prefix">Bitcoin Address Prefix:</label>
                                     <input disabled type="text" class="form-control" id="ans_prefix">
                                 </fieldset>
-                           	</div>
+                               </div>
                             <div class="col-sm-6">
                                 <fieldset class="form-group">
                                     <label for="ans_difficulty">Difficulty:</label>
@@ -377,18 +377,18 @@ Public Key: 04***</code></pre>
                 </div>
             </div>
         </div>
-		<!-- YOUR CONTENT ENDS HERE -->
-		
-		<!-- JavaScript: placed at the end of the document so the pages load faster -->
-		
-		<!-- jQuery library -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		
-		<!-- Popper -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		
-		<!-- Latest compiled and minified Bootstrap JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- YOUR CONTENT ENDS HERE -->
+
+        <!-- JavaScript: placed at the end of the document so the pages load faster -->
+
+        <!-- jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+        <!-- Popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <!-- DataTables -->
         <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -401,5 +401,5 @@ Public Key: 04***</code></pre>
         <!-- Bitcoin library -->
         <script src="./js/bitcore-lib.js"></script>
         <script src="./js/bitcoin.js"></script>
-	</body>
+    </body>
 </html>
