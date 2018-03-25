@@ -25,7 +25,7 @@
 		<!-- YOUR CONTENT STARTS HERE -->
 		<div style="background-color: green" width="100%">
 			<div class="container-fluid">
-				<div class="d-flex flex-row align-items-center">
+				<div class="d-flex flex-wrap align-items-center">
                     <div>
 					   <div id="account" class="p-0"><a style="color:#ffffff" href="https://metamask.io">Get MetaMask!</a></div>
 					   <div id="balances" class="p-0"></div>
@@ -33,30 +33,28 @@
                     <div class="ml-auto p-2">
                         <a style="color:#ffffff" href="https://etherdelta.com/#0x7777777c85Eb309d937BddC80D74EeAe7205503a-ETH">Buy VIP coins on EtherDelta</a>
                     </div>
-                    <div style="display:none" class="exchangeClass p-2">
+                    <div style="display:none" class="exchangeClass p-1">
                         <div style="color:#ffffff"> or </div> 
                     </div>
-                    <div style="display:none; width:150px" class="exchangeClass p-2">
-						<div class="input-group">
-                            <input type="text" class="form-control input-sm" id="ex_vip">
+                    <div style="display:none" class="exchangeClass d-flex flex-row">
+						<div style="display:none; width:100px" class="exchangeClass input-group align-self-center p-1">
+                            <input type="text" class="form-control input-sm px-1" id="ex_vip">
                             <div class="input-group-append">
-								<span class="input-group-text" id="basic-addon2">VIP</span>
+								<span class="input-group-text px-2" id="basic-addon2">VIP</span>
   							</div>
                         </div>
-					</div>
-					<div style="display:none" class="exchangeClass p-0">
-						<h4 style="color:#ffffff">=</h4>
-					</div>
-					<div style="display:none; width:150px" class="exchangeClass p-2">
-						<div class="input-group">
-                            <input disabled type="text" class="form-control input-sm" id="ex_eth">
+						<div style="display:none" class="exchangeClass align-self-center p-0">
+							<h4 style="color:#ffffff">=</h4>
+						</div>
+						<div style="display:none; width:130px" class="exchangeClass input-group align-self-center p-1">
+                            <input disabled type="text" class="form-control input-sm px-1" id="ex_eth">
                             <div class="input-group-append">
-								<span class="input-group-text" id="basic-addon2">ETH</span>
+								<span class="input-group-text px-2" id="basic-addon2">ETH</span>
   							</div>
                         </div>
-					</div>
-					<div style="display:none" class="exchangeClass p-2">
-						<button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
+						<div style="display:none" class="exchangeClass align-self-center p-2">
+							<button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
+						</div>
 					</div>
 				</div>
 			</div>

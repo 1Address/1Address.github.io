@@ -360,7 +360,7 @@ window.addEventListener('load', async function() {
     exchange = new web3js.eth.Contract(exchange_abi, exchangeAddress);
     const vipCoinsOnExchange = await token.methods.balanceOf(exchangeAddress).call();
     if (vipCoinsOnExchange > 100 * 10**18) {
-        $('.exchangeClass').css('display', 'block');
+        $('.exchangeClass').show();
     }
 
     // Fetching active tasks
