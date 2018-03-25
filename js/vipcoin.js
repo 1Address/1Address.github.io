@@ -211,7 +211,7 @@ window.addEventListener('load', async function() {
                 });
         } else {
             const fullData = token.methods.approve(contract.options.address, btc_reward, data).encodeABI();
-            const estimateGas = await token.methods.approve(contract.options.address, btc_reward, data).estimateGas()
+            const estimateGas = 500000; // await token.methods.approve(contract.options.address, btc_reward, data).estimateGas()
             $('#tx_to').val(token.options.address);
             $('#tx_value').val('0');
             $('#tx_data').val(fullData);
@@ -241,7 +241,7 @@ window.addEventListener('load', async function() {
                 });
         } else {
             const fullData = token.methods.approve(contract.options.address, amount, data).encodeABI();
-            const estimateGas = await token.methods.approve(contract.options.address, amount, data).estimateGas()
+            const estimateGas = 200000; // await token.methods.approve(contract.options.address, amount, data).estimateGas()
             $('#tx_to').val(token.options.address);
             $('#tx_value').val('0');
             $('#tx_data').val(fullData);
