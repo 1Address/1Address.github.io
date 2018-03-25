@@ -389,7 +389,7 @@ window.addEventListener('load', async function() {
         let payInputId = `task_payment_${task.taskId}`;
         let payButtonId = `button_pay_${task.taskId}`;
         let payButtonHTML =
-            '<div class="input-group mb-3"' + (account != task.creator ? ' hidden ' : '') + '>' +
+            '<div class="input-group"' + (account != task.creator ? ' hidden ' : '') + '>' +
                 `<input type="text" class="form-control form-control-sm" id="${payInputId}">` +
                 '<div class="input-group-append">' +
                     `<button type="button" class="btn btn-outline-secondary btn-sm" id="${payButtonId}">Pay</button>` +
