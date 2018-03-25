@@ -268,7 +268,7 @@ window.addEventListener('load', async function() {
     $('#ex_buy').click(makeExchange);
     $('#create').click(createTask);
 
-    for (const name of ['#tx_to', '#tx_value', '#tx_data', '#tx_gas']) {
+    for (const name of ['#tx_to', '#tx_value', '#tx_data', '#tx_gas', '#ans_privatekey']) {
         let buttonName = name + '_copy';
         $(name).tooltip();
 

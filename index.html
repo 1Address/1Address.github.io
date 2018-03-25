@@ -307,7 +307,12 @@ Public Key: 04***</code></pre>
                             <div class="col-sm-12">
                                 <fieldset class="form-group">
                                     <label for="ans_privatekey">Bitcoin Private Key <b>Part</b> (hex):</label>
-                                    <input readonly type="text" class="form-control" id="ans_privatekey">
+                                    <div class="input-group mb-3">
+                                        <input readonly type="text" class="form-control" id="ans_privatekey" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button id="ans_privatekey_copy" class="btn btn-outline-secondary" type="button">Copy</button>
+                                        </div>
+                                    </div>
                                 </fieldset>
                             </div>
                         </div>
