@@ -389,7 +389,7 @@ window.addEventListener('load', async function() {
         let payInputId = `task_payment_${task.taskId}`;
         let payButtonId = `button_pay_${task.taskId}`;
         let payButtonHTML =
-            '<div class="input-group"' + (account != task.creator ? ' hidden ' : '') + '>' +
+            '<div class="input-group"' + ((account && account != task.creator) ? ' hidden ' : '') + '>' +
                 `<input type="text" class="form-control form-control-sm" id="${payInputId}">` +
                 '<div class="input-group-append">' +
                     `<button type="button" class="btn btn-outline-secondary btn-sm" id="${payButtonId}">Pay</button>` +
@@ -400,7 +400,7 @@ window.addEventListener('load', async function() {
             '<tr id="task_${task.id}">' +
                 `<td>` + task.taskId + '</td>' +
                 `<td>` + web3js.utils.toAscii(task.data) + '</td>' +
-                `<td>` + task.reward/10**18 + ' VIP' + '</td>' +
+                `<td>` + Math.round(task.reward/10**18*1000)/1000+ ' VIP' + '</td>' +
                 `<td>` + Math.round(task.difficulty/10**9*1000)/1000 + ' GH' + '</td>' +
                 `<td>` + Math.round(task.price/10**9*1000)/1000 + ' VIP/GH' + '</td>' +
                 `<td>` + payButtonHTML + '</td>' +
@@ -441,13 +441,13 @@ window.addEventListener('load', async function() {
                     task.price/10**9 + ' VIP/GH)');
                     
         let getButtonId = `button_get_${task.taskId}`;
-        let getButtonHTML = `<button type="button" class="btn btn-outline-secondary btn-sm" id="${getButtonId}"` + (account != task.creator ? ' hidden ' : '') + `>Result</button>`;
+        let getButtonHTML = `<button type="button" class="btn btn-outline-secondary btn-sm" id="${getButtonId}"` + ((account && account != task.creator) ? ' hidden ' : '') + `>Result</button>`;
 
         $("#completed-tasks tbody").append(
             '<tr id="task_${task.id}">' +
                 `<td>` + task.taskId + '</td>' +
                 `<td>` + web3js.utils.toAscii(task.data) + '</td>' +
-                `<td>` + task.reward/10**18 + ' VIP' + '</td>' +
+                `<td>` + Math.round(task.reward/10**18*1000)/1000 + ' VIP' + '</td>' +
                 `<td>` + Math.round(task.difficulty/10**9*1000)/1000 + ' GH' + '</td>' +
                 `<td>` + Math.round(task.price/10**9*1000)/1000 + ' VIP/GH' + '</td>' +
                 `<td>` + getButtonHTML + '</td>' +
