@@ -41,7 +41,7 @@
                             <input type="text" class="form-control input-sm px-1" id="ex_vip">
                             <div class="input-group-append">
                                 <span class="input-group-text px-2" id="basic-addon2">VIP</span>
-                              </div>
+                            </div>
                         </div>
                         <div style="display:none" class="exchangeClass align-self-center p-0">
                             <h4 style="color:#ffffff">=</h4>
@@ -50,7 +50,7 @@
                             <input disabled type="text" class="form-control input-sm px-1" id="ex_eth">
                             <div class="input-group-append">
                                 <span class="input-group-text px-2" id="basic-addon2">ETH</span>
-                              </div>
+                            </div>
                         </div>
                         <div style="display:none" class="exchangeClass align-self-center p-2">
                             <button type="submit" class="btn btn-primary" id="ex_buy">Buy</button>
@@ -112,7 +112,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">GH</span>
                             </div>
-                            <input disabled type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
+                            <input readonly type="text" class="form-control" id="btc_difficulty" name="btc_difficulty">
                         </div>
                     </fieldset>
                 </div>
@@ -175,7 +175,7 @@ Public Key: 04***</code></pre>
                     <label for="create_private_key">Bitcoin Private Key:</label>
                     <input class="form-control" id="create_private_key" pattern="[0-9A-Za-z]{32}"></code>
                     <label for="create_public_key">Bitcoin Public Key:</label>
-                    <input disabled class="form-control" id="create_public_key" pattern="04[0-9A-Za-z]{64}"></code>
+                    <input readonly class="form-control" id="create_public_key" pattern="04[0-9A-Za-z]{64}"></code>
                     <p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
                 </div>
             </div>
@@ -197,7 +197,7 @@ Public Key: 04***</code></pre>
                     <label for="create_private_key">Bitcoin Private Key:</label>
                     <input class="form-control" id="create_private_key_2" pattern="[0-9A-Za-z]{32}"></code>
                     <label for="create_public_key">Bitcoin Public Key:</label>
-                    <input disabled class="form-control" id="create_public_key_2" pattern="04[0-9A-Za-z]{64}"></code>
+                    <input readonly class="form-control" id="create_public_key_2" pattern="04[0-9A-Za-z]{64}"></code>
                     <p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
                 </div>
             </div>
@@ -221,11 +221,11 @@ Public Key: 04***</code></pre>
                     <label for="add_private_key_2">Bitcoin Private Key 2:</label>
                     <input class="form-control" id="add_private_key_2" pattern="[0-9A-Za-z]{32}">
                     <label for="add_private_key_3">Bitcoin Private Key Sum:</label>
-                    <input disabled class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}">
+                    <input readonly class="form-control" id="add_private_key_3" pattern="[0-9A-Za-z]{32}">
                     <label for="add_private_key_wif">Bitcoin Private Key Sum in WIF format:</label>
-                    <input disabled class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}">
+                    <input readonly class="form-control" id="add_private_key_wif" pattern="[0-9A-Za-z]{32}">
                     <label for="add_private_key_address">Bitcoin Address:</label>
-                    <input disabled class="form-control" id="add_private_key_address">
+                    <input readonly class="form-control" id="add_private_key_address">
                     <p align="right" class="text-muted">Powered by <a href="">bitcore-lib.js</a></p>
                 </div>
             </div>
@@ -256,7 +256,7 @@ Public Key: 04***</code></pre>
                             <div class="col-sm-6">
                                 <fieldset class="form-group">
                                     <label for="ans_prefix">Bitcoin Address Prefix:</label>
-                                    <input disabled type="text" class="form-control" id="ans_prefix">
+                                    <input readonly type="text" class="form-control" id="ans_prefix">
                                 </fieldset>
                                </div>
                             <div class="col-sm-6">
@@ -266,7 +266,7 @@ Public Key: 04***</code></pre>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">GH</span>
                                         </div>
-                                        <input disabled type="text" class="form-control" id="ans_difficulty">
+                                        <input readonly type="text" class="form-control" id="ans_difficulty">
                                     </div>
                                 </fieldset>
                             </div>
@@ -279,7 +279,7 @@ Public Key: 04***</code></pre>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">VIP</span>
                                         </div>
-                                        <input type="text" class="form-control" id="ans_reward">
+                                        <input readonly type="text" class="form-control" id="ans_reward">
                                     </div>
                                 </fieldset>
                             </div>
@@ -290,7 +290,7 @@ Public Key: 04***</code></pre>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">VIP/GH</span>
                                         </div>
-                                        <input type="text" class="form-control" id="ans_price">
+                                        <input readonly type="text" class="form-control" id="ans_price">
                                     </div>
                                 </fieldset>
                             </div>
@@ -299,7 +299,7 @@ Public Key: 04***</code></pre>
                             <div class="col-sm-12">
                                 <fieldset class="form-group">
                                     <label for="ans_publickey">Bitcoin Public Key (hex):</label>
-                                    <input type="text" class="form-control" id="ans_publickey">
+                                    <input readonly type="text" class="form-control" id="ans_publickey">
                                 </fieldset>
                             </div>
                         </div>
@@ -307,7 +307,7 @@ Public Key: 04***</code></pre>
                             <div class="col-sm-12">
                                 <fieldset class="form-group">
                                     <label for="ans_privatekey">Bitcoin Private Key <b>Part</b> (hex):</label>
-                                    <input type="text" class="form-control" id="ans_privatekey">
+                                    <input readonly type="text" class="form-control" id="ans_privatekey">
                                 </fieldset>
                             </div>
                         </div>
@@ -344,28 +344,28 @@ Public Key: 04***</code></pre>
                     <div class="modal-body">
                         <label for="tx_to">Contract address:</label>
                         <div class="input-group mb-3">
-                            <input disabled class="form-control" id="tx_to" aria-describedby="basic-addon2">
+                            <input readonly class="form-control" id="tx_to" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="tx_to_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
                         </div>
                         <label for="tx_value">Value (ETH):</label>
                         <div class="input-group mb-3">
-                            <input disabled class="form-control" id="tx_value" aria-describedby="basic-addon2">
+                            <input readonly class="form-control" id="tx_value" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="tx_value_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
                         </div>
                         <label for="tx_data">Data:</label>
                         <div class="input-group mb-3">
-                            <textarea disabled rows="3" style="height:auto" class="form-control" id="tx_data" aria-describedby="basic-addon2"></textarea>
+                            <textarea readonly rows="3" style="height:auto" class="form-control" id="tx_data" aria-describedby="basic-addon2"></textarea>
                             <div class="input-group-append">
                                 <button id="tx_data_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
                         </div>
                         <label for="tx_data">Gas:</label>
                         <div class="input-group mb-3">
-                            <input disabled class="form-control" id="tx_gas" aria-describedby="basic-addon2">
+                            <input readonly class="form-control" id="tx_gas" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button id="tx_gas_copy" class="btn btn-outline-secondary" type="button">Copy</button>
                             </div>
