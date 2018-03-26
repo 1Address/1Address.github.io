@@ -453,10 +453,10 @@ window.addEventListener('load', async function() {
                 `<td>` + getButtonHTML + '</td>' +
             '</tr>'
         );
-        $('#completed-tasks').DataTable();
         
         $('#' + getButtonId).click(function() {
             getForTask(task);
         });
     }
+    $('#completed-tasks').DataTable();
 });
