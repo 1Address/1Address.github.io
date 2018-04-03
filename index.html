@@ -121,11 +121,18 @@
                 <div class="col-sm-6">
                     <fieldset class="form-group">
                         <label for="btc_reward">Reward:</label>
-                        <div class="input-group mb-2">
+                        <div class="input-group mb-0">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">VIP</span>
+                                <button id="paymentMethod" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">VIP</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:return false;">VIP</a>
+                                    <a style="display:none" class="exchangeClass dropdown-item" href="javascript:return false;">ETH</a>
+                                </div>
                             </div>
                             <input type="text" class="form-control" id="btc_reward" name="btc_reward">
+                        </div>
+                        <div class="input-group mb-1">
+                            <p id="exchangeWarning" style="color:gray"></p>
                         </div>
                     </fieldset>
                 </div>
