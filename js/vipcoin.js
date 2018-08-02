@@ -333,9 +333,9 @@ window.addEventListener('load', async function() {
             '<tr id="task_${task.id}">' +
                 `<td>` + task.taskId + '</td>' +
                 `<td>` + web3js.utils.toAscii(task.data) + '</td>' +
-                `<td>` + Math.round(task.reward/10**18*1000)/1000+ ' ETH' + '</td>' +
-                `<td>` + Math.round(task.difficulty/10**9*1000)/1000 + ' GH' + '</td>' +
-                `<td>` + Math.round(task.price/10**9*1000)/1000 + ' ETH/GH' + '</td>' +
+                `<td>` + Math.round(task.reward/10**18*1000000)/1000000+ ' ETH' + '</td>' +
+                `<td>` + Math.round(task.difficulty/10**9*1000000)/1000000 + ' GH' + '</td>' +
+                `<td>` + Math.round(task.price/10**9*1000000)/1000000 + ' ETH/GH' + '</td>' +
                 `<td>` + payButtonHTML + '</td>' +
             '</tr>'
         );
@@ -380,9 +380,9 @@ window.addEventListener('load', async function() {
             '<tr id="task_${task.id}">' +
                 `<td>` + task.taskId + '</td>' +
                 `<td>` + web3js.utils.toAscii(task.data) + '</td>' +
-                `<td>` + Math.round(task.reward/10**18*1000)/1000 + ' ETH' + '</td>' +
-                `<td>` + Math.round(task.difficulty/10**9*1000)/1000 + ' GH' + '</td>' +
-                `<td>` + Math.round(task.price/10**9*1000)/1000 + ' ETH/GH' + '</td>' +
+                `<td>` + Math.round(task.reward/10**18*1000000)/1000000 + ' ETH' + '</td>' +
+                `<td>` + Math.round(task.difficulty/10**9*1000000)/1000000 + ' GH' + '</td>' +
+                `<td>` + Math.round(task.price/10**9*1000000)/1000000 + ' ETH/GH' + '</td>' +
                 `<td>` + getButtonHTML + '</td>' +
             '</tr>'
         );
