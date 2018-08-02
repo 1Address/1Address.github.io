@@ -9,7 +9,7 @@ const explorerUrl = {
     'ropsten':'https://ropsten.etherscan.io/',
 }[ethnet];
 const contractAddress = {
-    'mainnet':'0xdB6f847849765Ca3ecD34e4D90F8C58B80bF5443',
+    'mainnet':'0xE793F0318f571eC463A4968f7870378F7655a44d',
     'ropsten':'0x16b0e794fEb8C4008C62269134908b12C6Ed5750',
 }[ethnet];
 
@@ -167,7 +167,6 @@ window.addEventListener('load', async function() {
 
     async function payForTask(taskId, reward) {
         const amount = web3js.utils.toWei(reward);
-        const data = contract.methods.payForTask(taskId, amount).encodeABI();
 
         if (account) {
             contract.methods.payForTask(taskId).send({from: account, value: amount})
