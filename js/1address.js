@@ -301,9 +301,19 @@ window.addEventListener('load', async function() {
     console.log('Fetching ' + tasksCount + ' active tasks...');
     let promises = [];
     for (let i = 0; i < tasksCount; i++) {
-        promises.push(contract.methods.tasks(i).call().then(async function(task) {
-            task.difficulty = await contract.methods.complexityForBtcAddressPrefixWithLength(task.data, task.dataLength).call();
+        promises.push(contract.methods.tasks(i).call().then(async function(res) {
+            console.log(res);
+            const task = {};
+            task.taskId = res[0];
+            task.creator = res[1];
+            task.reward = res[2];
+            task.data = res[3];
+            task.requestPublicXPoint = res[4];
+            task.requestPublicYPoint = res[5];
+            task.answerPrivateKey = res[6];
+
             task.prefix = web3js.utils.hexToAscii(task.data);
+            task.difficulty = await contract.methods.complexityForBtcAddressPrefixWithLength(task.data, task.prefix.length).call();
             task.price = task.reward / task.difficulty;
             return task;
         }));
@@ -354,9 +364,18 @@ window.addEventListener('load', async function() {
         const completedTasksCount = await contracts[j].methods.completedTasksCount().call();
         let promises = [];
         for (let i = 0; i < completedTasksCount; i++) {
-            completedPromises.push(contracts[j].methods.completedTasks(i).call().then(async function(task) {
-                task.difficulty = await contracts[j].methods.complexityForBtcAddressPrefixWithLength(task.data, task.dataLength).call();
+            completedPromises.push(contracts[j].methods.completedTasks(i).call().then(async function(res) {
+                const task = {};
+                task.taskId = res[0];
+                task.creator = res[1];
+                task.reward = res[2];
+                task.data = res[3];
+                task.requestPublicXPoint = res[4];
+                task.requestPublicYPoint = res[5];
+                task.answerPrivateKey = res[6];
+
                 task.prefix = web3js.utils.hexToAscii(task.data);
+                task.difficulty = await contracts[j].methods.complexityForBtcAddressPrefixWithLength(task.data, task.prefix.length).call();
                 task.price = task.reward/task.difficulty;
                 return task;
             }));
