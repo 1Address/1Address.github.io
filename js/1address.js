@@ -9,7 +9,7 @@ const explorerUrl = {
     'ropsten':'https://ropsten.etherscan.io/',
 }[ethnet];
 const contractAddress = {
-    'mainnet':'0xE793F0318f571eC463A4968f7870378F7655a44d',
+    'mainnet':'0x37a857e007Ba6ae7862bC5Ab1104DD4396de7950',
     'ropsten':'0x16b0e794fEb8C4008C62269134908b12C6Ed5750',
 }[ethnet];
 
