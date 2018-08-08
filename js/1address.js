@@ -201,6 +201,7 @@ window.addEventListener('load', async function() {
         $('#ans_price').val(task.price / 10**9);
         $('#ans_publickey').val('04' + web3js.utils.toBN(task.requestPublicXPoint).toString(16, 64).toUpperCase() + web3js.utils.toBN(task.requestPublicYPoint).toString(16, 64).toUpperCase());
         $('#ans_privatekey').val(web3js.utils.toBN(task.answerPrivateKey).toString(16, 64).toUpperCase());
+        $('#ans_privatekey_wif').val((new bitcore.PrivateKey(task.answerPrivateKey)).toUncompressedWIF());
         $('#modalAnswer').modal('show');
     }
 
@@ -210,7 +211,7 @@ window.addEventListener('load', async function() {
     $('#btc_price').bind('input', updateBtcReward);
     $('#create').click(createTask);
 
-    for (const name of ['#tx_to', '#tx_value', '#tx_data', '#tx_gas', '#ans_privatekey']) {
+    for (const name of ['#tx_to', '#tx_value', '#tx_data', '#tx_gas', '#ans_privatekey', '#ans_privatekey_wif']) {
         let buttonName = name + '_copy';
         $(name).tooltip();
 
