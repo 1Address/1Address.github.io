@@ -158,7 +158,7 @@ window.addEventListener('load', async function() {
             const fullData = contract.methods.createBitcoinAddressPrefixTask(btc_prefix, requestPublicXPoint, requestPublicYPoint, 0).encodeABI();
             const estimateGas = 500000;
             $('#tx_to').val(contract.options.address);
-            $('#tx_value').val(btc_reward);
+            $('#tx_value').val($("#btc_reward").val());
             $('#tx_data').val(fullData);
             $('#tx_gas').val(Math.ceil(estimateGas/1000)*1000);
             $('#txModal').modal('show');
@@ -187,7 +187,7 @@ window.addEventListener('load', async function() {
             const fullData = contract.methods.payForTask(taskId).encodeABI();
             const estimateGas = 200000;
             $('#tx_to').val(contract.options.address);
-            $('#tx_value').val(amount);
+            $('#tx_value').val(reward);
             $('#tx_data').val(fullData);
             $('#tx_gas').val(Math.ceil(estimateGas/1000)*1000);
             $('#txModal').modal('show');
