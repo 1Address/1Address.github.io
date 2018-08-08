@@ -195,13 +195,14 @@ window.addEventListener('load', async function() {
     }
 
     async function getForTask(task) {
+        const privateKeyString = web3js.utils.toBN(task.answerPrivateKey).toString(16, 64);
         $('#ans_prefix').val(task.prefix);
         $('#ans_difficulty').val(task.difficulty / 10**9);
         $('#ans_reward').val(task.reward / 10**18);
         $('#ans_price').val(task.price / 10**9);
         $('#ans_publickey').val('04' + web3js.utils.toBN(task.requestPublicXPoint).toString(16, 64).toUpperCase() + web3js.utils.toBN(task.requestPublicYPoint).toString(16, 64).toUpperCase());
-        $('#ans_privatekey').val(web3js.utils.toBN(task.answerPrivateKey).toString(16, 64).toUpperCase());
-        $('#ans_privatekey_wif').val((new bitcore.PrivateKey(task.answerPrivateKey)).toUncompressedWIF());
+        $('#ans_privatekey').val(privateKeyString.toUpperCase());
+        $('#ans_privatekey_wif').val((new bitcore.PrivateKey(privateKeyString)).toUncompressedWIF());
         $('#modalAnswer').modal('show');
     }
 
@@ -213,28 +214,41 @@ window.addEventListener('load', async function() {
 
     for (const name of ['#tx_to', '#tx_value', '#tx_data', '#tx_gas', '#ans_privatekey', '#ans_privatekey_wif']) {
         let buttonName = name + '_copy';
-        $(name).tooltip();
+        $(buttonName).tooltip();
 
         $(buttonName).bind('click', function() {
             var input = document.querySelector(name);
             input.setSelectionRange(0, input.value.length + 1);
+
+            var copy = function (e) {
+                e.preventDefault();
+                if (e.clipboardData) {
+                    e.clipboardData.setData('text/plain', input.value);
+                } else if (window.clipboardData) {
+                    window.clipboardData.setData('Text', input.value);
+                }
+            }
+
+            window.addEventListener('copy', copy);
             try {
                 if (document.execCommand('copy')) {
                     $(buttonName).trigger('copied', ['Copied!']);
                 } else {
-                    $(buttonName).trigger('copied', ['Copy with Ctrl+C']);
+                    $(buttonName).trigger('copied', ['Copy with Ctrl/Cmd+C']);
                 }
             } catch (err) {
-                $(buttonName).trigger('copied', ['Copy with Ctrl+C']);
+                $(buttonName).trigger('copied', ['Copy with Ctrl/Cmd+C']);
             }
+            window.removeEventListener('copy', copy);
         });
 
-        $(name).bind('copied', function(event, message) {
+        $(buttonName).bind('copied', function(event, message) {
             $(this).attr('title', message)
-                .tooltip('fixTitle')
+                .tooltip('_fixTitle') // https://github.com/mistic100/jQuery-QueryBuilder/issues/432#issuecomment-395164492
                 .tooltip('show')
                 .attr('title', 'Copy to Clipboard')
-                .tooltip('fixTitle');
+                .tooltip('_fixTitle');
+            setTimeout
         });
     }
 
